@@ -10,99 +10,40 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
     body { font-family: 'Orbitron', sans-serif; }
-    .neon-text { 
-      text-shadow: 0 0 10px #22d3ee, 0 0 20px #22d3ee, 
-                   0 0 40px #ec4899, 0 0 80px #ec4899; 
-    }
-    .glass { 
-      background: rgba(9, 9, 11, 0.92); 
-      backdrop-filter: blur(24px); 
-      border: 1px solid rgba(165, 243, 252, 0.2);
-    }
-    .glow-button:hover {
-      box-shadow: 0 0 25px #67e8f9;
-      transform: translateY(-2px);
-    }
+    .neon-text { text-shadow: 0 0 20px #22d3ee, 0 0 40px #22d3ee, 0 0 60px #ec4899; }
+    .glass { background: rgba(9, 9, 11, 0.9); backdrop-filter: blur(20px); }
     canvas#particles { position: fixed; top: 0; left: 0; z-index: -1; pointer-events: none; }
   </style>
 </head>
 <body class="bg-zinc-950 text-cyan-400 overflow-x-hidden">
   <canvas id="particles"></canvas>
 
-  <nav class="fixed top-0 w-full z-50 glass border-b border-cyan-400/30">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+  <nav class="fixed top-0 w-full z-50 glass border-b border-cyan-500/30">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <div class="flex items-center gap-3">
-        <i class="fa-solid fa-bolt text-5xl text-pink-500"></i>
-        <span class="text-5xl font-black tracking-tighter neon-text">VIRAL TRAFFIC ENGINE</span>
+        <i class="fa-solid fa-bolt text-4xl text-pink-500"></i>
+        <span class="text-4xl font-black tracking-tighter neon-text">VIRAL TRAFFIC ENGINE</span>
       </div>
-      <button onclick="showAdminModal()" 
-              class="glow-button px-10 py-4 bg-gradient-to-r from-pink-600 to-cyan-600 hover:from-pink-500 hover:to-cyan-500 rounded-3xl font-bold flex items-center gap-3 text-xl transition-all">
+      <button onclick="showAdminModal()" class="px-8 py-3 bg-gradient-to-r from-pink-600 to-cyan-600 hover:from-pink-500 hover:to-cyan-500 rounded-2xl font-bold flex items-center gap-3 text-lg">
         <i class="fa-solid fa-shield-halved"></i> ADMIN PANEL
       </button>
     </div>
   </nav>
 
-  <div class="min-h-screen pt-32 pb-20">
+  <div class="min-h-screen pt-28 pb-20">
     <div class="max-w-6xl mx-auto text-center px-6">
-      <h1 class="text-8xl font-black tracking-tighter neon-text mb-6">TRAFFIC IS EXPLODING</h1>
-      <p class="text-3xl text-slate-300">Share your link • Watch real visitors flood in</p>
+      <h1 class="text-8xl font-black tracking-tighter neon-text mb-4">TRAFFIC IS EXPLODING</h1>
+      <p class="text-3xl mt-4 text-slate-300">Share your link • Watch real visitors flood in</p>
     </div>
 
-    <!-- Stats -->
-    <div class="max-w-5xl mx-auto mt-16 px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="glass rounded-3xl p-10 text-center border border-cyan-400/30">
-        <p class="uppercase text-xs tracking-[4px] text-cyan-300">TOTAL TRAFFIC GENERATED</p>
-        <div id="totalTraffic" class="text-7xl font-black text-white mt-6">0</div>
-      </div>
-      <div class="glass rounded-3xl p-10 text-center border border-cyan-400/30">
-        <p class="uppercase text-xs tracking-[4px] text-cyan-300">LIVE VISITORS RIGHT NOW</p>
-        <div id="liveVisitors" class="text-7xl font-black text-white mt-6">0</div>
-      </div>
-      <div class="glass rounded-3xl p-10 text-center border border-cyan-400/30">
-        <p class="uppercase text-xs tracking-[4px] text-cyan-300">YOUR CURRENT RANK</p>
-        <div id="yourRank" class="text-7xl font-black text-pink-400 mt-6">#1</div>
-      </div>
-    </div>
-
-    <!-- Target URL -->
-    <div class="max-w-4xl mx-auto mt-16 px-6">
-      <div class="glass rounded-3xl p-12 border border-pink-400/30 text-center">
-        <p class="uppercase text-xs tracking-widest mb-3 text-pink-300">ALL TRAFFIC IS SENT HERE</p>
-        <a id="targetLink" href="#" target="_blank" 
-           class="block text-3xl font-bold text-white hover:text-pink-400 break-all transition-colors">
-          Set target URL in Admin Panel
-        </a>
-      </div>
-    </div>
-
-    <!-- Viral Link -->
     <div class="max-w-4xl mx-auto mt-16 px-6">
       <div class="glass rounded-3xl p-10">
         <h2 class="text-4xl font-bold mb-8 text-center">YOUR VIRAL REFERRAL LINK</h2>
         <div class="flex gap-4">
-          <input id="refLink" readonly 
-                 class="flex-1 bg-zinc-900 border border-cyan-500/50 rounded-3xl px-8 py-7 text-xl font-mono text-white">
-          <button onclick="copyLink()" id="copyBtn" 
-                  class="px-14 bg-cyan-500 hover:bg-cyan-400 text-black font-black rounded-3xl text-xl transition-all">
-            COPY LINK
-          </button>
+          <input id="refLink" readonly class="flex-1 bg-zinc-900 border border-cyan-500/50 rounded-2xl px-8 py-7 text-xl font-mono text-white">
+          <button onclick="copyLink()" id="copyBtn" class="px-12 bg-cyan-500 hover:bg-cyan-400 text-black font-black rounded-2xl text-xl">COPY LINK</button>
         </div>
-        <div id="linkStatus" class="mt-6 text-emerald-400 text-sm font-medium text-center">✅ Instant link • Ready to share</div>
-
-        <!-- 11 Sharing Buttons -->
-        <div class="grid grid-cols-4 md:grid-cols-7 gap-4 mt-10">
-          <button onclick="shareTwitter()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl flex items-center justify-center gap-3 text-2xl transition-all"><i class="fa-brands fa-x-twitter"></i></button>
-          <button onclick="shareFacebook()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl flex items-center justify-center gap-3 text-2xl transition-all"><i class="fa-brands fa-facebook"></i></button>
-          <button onclick="shareWhatsApp()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl flex items-center justify-center gap-3 text-2xl transition-all"><i class="fa-brands fa-whatsapp"></i></button>
-          <button onclick="shareTelegram()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl flex items-center justify-center gap-3 text-2xl transition-all"><i class="fa-brands fa-telegram"></i></button>
-          <button onclick="shareLinkedIn()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl flex items-center justify-center gap-3 text-2xl transition-all"><i class="fa-brands fa-linkedin"></i></button>
-          <button onclick="shareReddit()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl flex items-center justify-center gap-3 text-2xl transition-all"><i class="fa-brands fa-reddit"></i></button>
-          <button onclick="shareEmail()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl flex items-center justify-center gap-3 text-2xl transition-all"><i class="fa-solid fa-envelope"></i></button>
-          <button onclick="shareDiscord()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl flex items-center justify-center gap-3 text-2xl transition-all"><i class="fa-brands fa-discord"></i></button>
-          <button onclick="sharePinterest()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl flex items-center justify-center gap-3 text-2xl transition-all"><i class="fa-brands fa-pinterest"></i></button>
-          <button onclick="shareTumblr()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl flex items-center justify-center gap-3 text-2xl transition-all"><i class="fa-brands fa-tumblr"></i></button>
-          <button onclick="shareSMS()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl flex items-center justify-center gap-3 text-2xl transition-all"><i class="fa-solid fa-sms"></i></button>
-        </div>
+        <div id="linkStatus" class="mt-4 text-emerald-400 text-sm font-medium">✅ Instant link • Ready to share</div>
       </div>
     </div>
 
@@ -120,20 +61,16 @@
         <button onclick="hideAdminModal()" class="text-5xl text-slate-400 hover:text-white">×</button>
       </div>
       <div id="passwordScreen">
-        <input id="adminPass" type="password" placeholder="ADMIN PASSWORD" 
-               class="w-full bg-zinc-900 border border-pink-500 rounded-3xl px-8 py-7 text-2xl mb-8">
-        <button onclick="checkAdminPassword()" 
-                class="w-full py-7 bg-gradient-to-r from-pink-600 to-purple-600 rounded-3xl text-2xl font-bold">UNLOCK</button>
+        <input id="adminPass" type="password" placeholder="ADMIN PASSWORD" class="w-full bg-zinc-900 border border-pink-500 rounded-2xl px-8 py-7 text-2xl mb-8">
+        <button onclick="checkAdminPassword()" class="w-full py-7 bg-gradient-to-r from-pink-600 to-purple-600 rounded-2xl text-2xl font-bold">UNLOCK</button>
       </div>
       <div id="adminDashboard" class="hidden space-y-10">
         <div>
           <label class="block text-xs uppercase tracking-widest mb-3">Change Target Website</label>
-          <input id="newTargetUrl" class="w-full bg-zinc-900 border border-cyan-500 rounded-3xl px-8 py-6 text-lg">
-          <button onclick="updateTargetWebsite()" 
-                  class="mt-6 w-full py-6 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-3xl text-xl">SAVE TARGET URL</button>
+          <input id="newTargetUrl" class="w-full bg-zinc-900 border border-cyan-500 rounded-2xl px-8 py-6 text-lg">
+          <button onclick="updateTargetWebsite()" class="mt-6 w-full py-6 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-2xl text-xl">SAVE TARGET URL</button>
         </div>
-        <button onclick="resetAllStats()" 
-                class="w-full py-6 bg-red-600 hover:bg-red-500 text-white font-bold rounded-3xl text-xl">RESET ALL STATS</button>
+        <button onclick="resetAllStats()" class="w-full py-6 bg-red-600 hover:bg-red-500 text-white font-bold rounded-2xl text-xl">RESET ALL STATS</button>
       </div>
     </div>
   </div>
@@ -233,6 +170,7 @@
     function shareTumblr() { window.open(`https://www.tumblr.com/share/link?url=${encodeURIComponent(document.getElementById('refLink').value)}`) }
     function shareSMS() { window.location.href = `sms:?body=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`) }
 
+    // STRONG GLOBAL EXPOSURE - this is what Netlify/Cloudflare needs
     window.showAdminModal = showAdminModal
     window.hideAdminModal = hideAdminModal
     window.checkAdminPassword = checkAdminPassword
