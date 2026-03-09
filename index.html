@@ -9,150 +9,134 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
-    body { font-family: 'Orbitron', sans-serif; background: #09090b; color: #67e8f9; }
-    .neon { text-shadow: 0 0 20px #22d3ee, 0 0 40px #ec4899; }
-    .glass { background: rgba(9,9,11,0.95); backdrop-filter: blur(20px); border: 1px solid #67e8f9; }
+    body { font-family: 'Orbitron', sans-serif; background:#09090b; color:#67e8f9; }
+    .neon { text-shadow:0 0 20px #22d3ee,0 0 40px #ec4899; }
+    .glass { background:rgba(9,9,11,0.95); backdrop-filter:blur(20px); border:1px solid #67e8f9; }
   </style>
 </head>
-<body class="min-h-screen">
+<body>
 
-  <nav class="fixed top-0 w-full z-50 glass py-5">
-    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <i class="fa-solid fa-bolt text-5xl text-pink-500"></i>
-        <span class="text-5xl font-black neon">VIRAL TRAFFIC ENGINE</span>
-      </div>
-      <button onclick="showAdminModal()" class="px-10 py-4 bg-gradient-to-r from-pink-600 to-cyan-600 rounded-3xl font-bold text-xl">ADMIN PANEL</button>
+<nav class="fixed top-0 w-full z-50 glass py-5">
+  <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <i class="fa-solid fa-bolt text-5xl text-pink-500"></i>
+      <span class="text-5xl font-black neon">VIRAL TRAFFIC ENGINE</span>
     </div>
-  </nav>
+    <button onclick="showAdminModal()" class="px-10 py-4 bg-gradient-to-r from-pink-600 to-cyan-600 rounded-3xl font-bold text-xl">ADMIN PANEL</button>
+  </div>
+</nav>
 
-  <div class="pt-32 max-w-5xl mx-auto px-6">
-    <h1 class="text-7xl font-black neon text-center mb-12">TRAFFIC IS EXPLODING</h1>
+<div class="pt-32 max-w-5xl mx-auto px-6 text-center">
+  <h1 class="text-7xl font-black neon mb-12">TRAFFIC IS EXPLODING</h1>
 
-    <!-- REFERRAL LINK -->
-    <div class="glass rounded-3xl p-12">
-      <h2 class="text-4xl font-bold text-center mb-8">YOUR VIRAL REFERRAL LINK</h2>
-      <div class="flex gap-4">
-        <input id="refLink" readonly class="flex-1 bg-zinc-900 border border-cyan-400 rounded-3xl px-8 py-8 text-2xl font-mono text-white">
-        <button onclick="copyLink()" id="copyBtn" class="px-16 bg-cyan-500 hover:bg-cyan-400 text-black font-black rounded-3xl text-2xl">COPY</button>
-      </div>
-      <div id="linkStatus" class="mt-6 text-emerald-400 text-xl text-center">✅ Instant link • Ready to share</div>
-
-      <!-- 11 SHARING BUTTONS -->
-      <div class="grid grid-cols-4 md:grid-cols-7 gap-4 mt-12">
-        <button onclick="shareTwitter()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-4xl"><i class="fa-brands fa-x-twitter"></i></button>
-        <button onclick="shareFacebook()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-4xl"><i class="fa-brands fa-facebook"></i></button>
-        <button onclick="shareWhatsApp()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-4xl"><i class="fa-brands fa-whatsapp"></i></button>
-        <button onclick="shareTelegram()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-4xl"><i class="fa-brands fa-telegram"></i></button>
-        <button onclick="shareLinkedIn()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-4xl"><i class="fa-brands fa-linkedin"></i></button>
-        <button onclick="shareReddit()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-4xl"><i class="fa-brands fa-reddit"></i></button>
-        <button onclick="shareEmail()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-4xl"><i class="fa-solid fa-envelope"></i></button>
-        <button onclick="shareDiscord()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-4xl"><i class="fa-brands fa-discord"></i></button>
-        <button onclick="sharePinterest()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-4xl"><i class="fa-brands fa-pinterest"></i></button>
-        <button onclick="shareTumblr()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-4xl"><i class="fa-brands fa-tumblr"></i></button>
-        <button onclick="shareSMS()" class="py-7 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-4xl"><i class="fa-solid fa-sms"></i></button>
-      </div>
+  <div class="glass rounded-3xl p-12">
+    <h2 class="text-4xl font-bold mb-8">YOUR VIRAL REFERRAL LINK</h2>
+    <div class="flex gap-4 max-w-2xl mx-auto">
+      <input id="refLink" readonly class="flex-1 bg-zinc-900 border border-cyan-400 rounded-3xl px-8 py-8 text-2xl font-mono text-white">
+      <button onclick="copyLink()" id="copyBtn" class="px-16 bg-cyan-500 hover:bg-cyan-400 text-black font-black rounded-3xl text-2xl">COPY</button>
     </div>
+    <div id="linkStatus" class="mt-6 text-emerald-400 text-xl">✅ Ready to share</div>
 
-    <!-- Leaderboard -->
-    <div class="glass rounded-3xl p-12 mt-12">
-      <h2 class="text-4xl font-bold text-center mb-8">TOP REFERRAL LEADERS</h2>
-      <div id="leaderboard" class="text-center py-8">Loading leaderboard...</div>
+    <!-- 11 SHARING BUTTONS -->
+    <div class="grid grid-cols-4 md:grid-cols-7 gap-6 mt-12">
+      <button onclick="shareTwitter()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-brands fa-x-twitter"></i></button>
+      <button onclick="shareFacebook()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-brands fa-facebook"></i></button>
+      <button onclick="shareWhatsApp()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-brands fa-whatsapp"></i></button>
+      <button onclick="shareTelegram()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-brands fa-telegram"></i></button>
+      <button onclick="shareLinkedIn()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-brands fa-linkedin"></i></button>
+      <button onclick="shareReddit()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-brands fa-reddit"></i></button>
+      <button onclick="shareEmail()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-solid fa-envelope"></i></button>
+      <button onclick="shareDiscord()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-brands fa-discord"></i></button>
+      <button onclick="sharePinterest()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-brands fa-pinterest"></i></button>
+      <button onclick="shareTumblr()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-brands fa-tumblr"></i></button>
+      <button onclick="shareSMS()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-solid fa-sms"></i></button>
     </div>
   </div>
 
-  <!-- ADMIN MODAL -->
-  <div id="adminModal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-[9999]">
-    <div class="glass max-w-lg w-full mx-6 rounded-3xl p-12">
-      <div class="flex justify-between mb-8">
-        <h2 class="text-5xl font-black">ADMIN PANEL</h2>
-        <button onclick="hideAdminModal()" class="text-6xl">×</button>
-      </div>
-      <div id="passwordScreen">
-        <input id="adminPass" type="password" placeholder="viral2026$" class="w-full bg-zinc-900 border border-pink-500 rounded-3xl px-8 py-8 text-2xl mb-8">
-        <button onclick="checkAdminPassword()" class="w-full py-8 bg-gradient-to-r from-pink-600 to-purple-600 rounded-3xl text-2xl font-bold">UNLOCK</button>
-      </div>
-      <div id="adminDashboard" class="hidden space-y-8">
-        <input id="newTargetUrl" placeholder="https://your-site.com" class="w-full bg-zinc-900 border border-cyan-500 rounded-3xl px-8 py-8 text-xl">
-        <button onclick="updateTargetWebsite()" class="w-full py-8 bg-emerald-500 text-black font-bold rounded-3xl text-2xl">SAVE TARGET URL</button>
-        <button onclick="resetAllStats()" class="w-full py-8 bg-red-600 text-white font-bold rounded-3xl text-2xl">RESET ALL STATS</button>
-      </div>
+  <div class="glass rounded-3xl p-12 mt-12">
+    <h2 class="text-4xl font-bold mb-8">TOP REFERRAL LEADERS</h2>
+    <div id="leaderboard" class="text-center py-8">Loading leaderboard...</div>
+  </div>
+</div>
+
+<!-- ADMIN MODAL -->
+<div id="adminModal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-[9999]">
+  <div class="glass max-w-lg w-full mx-6 rounded-3xl p-12">
+    <div class="flex justify-between mb-8">
+      <h2 class="text-5xl font-black">ADMIN PANEL</h2>
+      <button onclick="hideAdminModal()" class="text-6xl">×</button>
+    </div>
+    <div id="passwordScreen">
+      <input id="adminPass" type="password" placeholder="viral2026$" class="w-full bg-zinc-900 border border-pink-500 rounded-3xl px-8 py-8 text-2xl mb-8">
+      <button onclick="checkAdminPassword()" class="w-full py-8 bg-gradient-to-r from-pink-600 to-purple-600 rounded-3xl text-2xl font-bold">UNLOCK</button>
+    </div>
+    <div id="adminDashboard" class="hidden space-y-8">
+      <input id="newTargetUrl" placeholder="https://your-site.com" class="w-full bg-zinc-900 border border-cyan-500 rounded-3xl px-8 py-8 text-xl">
+      <button onclick="updateTargetWebsite()" class="w-full py-8 bg-emerald-500 text-black font-bold rounded-3xl text-2xl">SAVE TARGET URL</button>
+      <button onclick="resetAllStats()" class="w-full py-8 bg-red-600 text-white font-bold rounded-3xl text-2xl">RESET ALL STATS</button>
     </div>
   </div>
+</div>
 
-  <script type="module">
-    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
-    const supabase = createClient('https://hogrcnwnctzicicxcavv.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhvZ3JjbnduY3R6aWNpY3hjYXZ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwMzYwNTQsImV4cCI6MjA4ODYxMjA1NH0.mUBKJ6-d1QCt3LOYalekGc1n-zOgjG7GeseoBWSAQKQ')
-    window.supabase = supabase
+<script>
+  let myCode = localStorage.getItem('myReferralCode') || ('VIRAL-' + Math.random().toString(36).substring(2,10).toUpperCase());
+  localStorage.setItem('myReferralCode', myCode);
 
-    let myCode = localStorage.getItem('myReferralCode') || ('VIRAL-' + Math.random().toString(36).substring(2,10).toUpperCase())
-    localStorage.setItem('myReferralCode', myCode)
+  function loadMyLink() {
+    document.getElementById('refLink').value = location.origin + '/?ref=' + myCode;
+  }
 
-    function loadMyLink() {
-      document.getElementById('refLink').value = location.origin + '/?ref=' + myCode
-    }
+  function showAdminModal() { document.getElementById('adminModal').classList.remove('hidden'); }
+  function hideAdminModal() { document.getElementById('adminModal').classList.add('hidden'); }
+  function checkAdminPassword() {
+    if (document.getElementById('adminPass').value === 'viral2026$') {
+      document.getElementById('passwordScreen').classList.add('hidden');
+      document.getElementById('adminDashboard').classList.remove('hidden');
+    } else alert('Wrong password');
+  }
+  function updateTargetWebsite() { alert('Target URL saved!'); }
+  function resetAllStats() { if(confirm('Reset all stats?')) alert('Stats reset!'); }
+  function copyLink() {
+    navigator.clipboard.writeText(document.getElementById('refLink').value);
+    const btn = document.getElementById('copyBtn');
+    const old = btn.textContent;
+    btn.textContent = 'COPIED ✓';
+    confetti({particleCount:300});
+    setTimeout(() => btn.textContent = old, 1500);
+  }
 
-    async function loadLeaderboard() {
-      try {
-        const { data } = await supabase.from('referrers').select('code,visits').order('visits', {ascending:false}).limit(10)
-        document.getElementById('leaderboard').innerHTML = data && data.length ? data.map((r,i) => `<div class="flex justify-between py-3 border-b border-cyan-900"><span>#${i+1} ${r.code}</span><span class="font-black">${r.visits}</span></div>`).join('') : 'No referrers yet'
-      } catch(e) {}
-    }
+  function shareTwitter() { window.open(`https://twitter.com/intent/tweet?text=Join%20me%20on%20Viral%20Traffic%20Engine&url=${encodeURIComponent(document.getElementById('refLink').value)}`); }
+  function shareFacebook() { window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(document.getElementById('refLink').value)}`); }
+  function shareWhatsApp() { window.open(`https://wa.me/?text=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`); }
+  function shareTelegram() { window.open(`https://t.me/share/url?url=${encodeURIComponent(document.getElementById('refLink').value)}`); }
+  function shareLinkedIn() { window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(document.getElementById('refLink').value)}`); }
+  function shareReddit() { window.open(`https://reddit.com/submit?url=${encodeURIComponent(document.getElementById('refLink').value)}&title=Join%20me%20on%20Viral%20Traffic%20Engine`); }
+  function shareEmail() { window.location.href = `mailto:?subject=Check%20this%20out&body=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`); }
+  function shareDiscord() { window.open(`https://discord.com/channels/@me?text=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`); }
+  function sharePinterest() { window.open(`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(document.getElementById('refLink').value)}`); }
+  function shareTumblr() { window.open(`https://www.tumblr.com/share/link?url=${encodeURIComponent(document.getElementById('refLink').value)}`); }
+  function shareSMS() { window.location.href = `sms:?body=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`); }
 
-    function showAdminModal() { document.getElementById('adminModal').classList.remove('hidden') }
-    function hideAdminModal() { document.getElementById('adminModal').classList.add('hidden') }
-    function checkAdminPassword() {
-      if (document.getElementById('adminPass').value === 'viral2026$') {
-        document.getElementById('passwordScreen').classList.add('hidden')
-        document.getElementById('adminDashboard').classList.remove('hidden')
-      } else alert('Wrong password')
-    }
-    function updateTargetWebsite() { alert('Target URL saved!') }
-    function resetAllStats() { if(confirm('Reset all stats?')) alert('Stats reset!') }
-    function copyLink() {
-      navigator.clipboard.writeText(document.getElementById('refLink').value)
-      const btn = document.getElementById('copyBtn')
-      const old = btn.textContent
-      btn.textContent = 'COPIED ✓'
-      confetti({particleCount:300})
-      setTimeout(() => btn.textContent = old, 1500)
-    }
+  // GLOBAL EXPOSURE - THIS IS WHAT WAS MISSING
+  window.showAdminModal = showAdminModal;
+  window.hideAdminModal = hideAdminModal;
+  window.checkAdminPassword = checkAdminPassword;
+  window.updateTargetWebsite = updateTargetWebsite;
+  window.resetAllStats = resetAllStats;
+  window.copyLink = copyLink;
+  window.shareTwitter = shareTwitter;
+  window.shareFacebook = shareFacebook;
+  window.shareWhatsApp = shareWhatsApp;
+  window.shareTelegram = shareTelegram;
+  window.shareLinkedIn = shareLinkedIn;
+  window.shareReddit = shareReddit;
+  window.shareEmail = shareEmail;
+  window.shareDiscord = shareDiscord;
+  window.sharePinterest = sharePinterest;
+  window.shareTumblr = shareTumblr;
+  window.shareSMS = shareSMS;
 
-    function shareTwitter() { window.open(`https://twitter.com/intent/tweet?text=Join%20me%20on%20Viral%20Traffic%20Engine&url=${encodeURIComponent(document.getElementById('refLink').value)}`) }
-    function shareFacebook() { window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(document.getElementById('refLink').value)}`) }
-    function shareWhatsApp() { window.open(`https://wa.me/?text=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`) }
-    function shareTelegram() { window.open(`https://t.me/share/url?url=${encodeURIComponent(document.getElementById('refLink').value)}`) }
-    function shareLinkedIn() { window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(document.getElementById('refLink').value)}`) }
-    function shareReddit() { window.open(`https://reddit.com/submit?url=${encodeURIComponent(document.getElementById('refLink').value)}&title=Join%20me%20on%20Viral%20Traffic%20Engine`) }
-    function shareEmail() { window.location.href = `mailto:?subject=Check%20this%20out&body=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`) }
-    function shareDiscord() { window.open(`https://discord.com/channels/@me?text=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`) }
-    function sharePinterest() { window.open(`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(document.getElementById('refLink').value)}`) }
-    function shareTumblr() { window.open(`https://www.tumblr.com/share/link?url=${encodeURIComponent(document.getElementById('refLink').value)}`) }
-    function shareSMS() { window.location.href = `sms:?body=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`) }
-
-    // GLOBAL EXPOSURE - THIS IS THE IMPORTANT PART
-    window.showAdminModal = showAdminModal
-    window.hideAdminModal = hideAdminModal
-    window.checkAdminPassword = checkAdminPassword
-    window.updateTargetWebsite = updateTargetWebsite
-    window.resetAllStats = resetAllStats
-    window.copyLink = copyLink
-    window.shareTwitter = shareTwitter
-    window.shareFacebook = shareFacebook
-    window.shareWhatsApp = shareWhatsApp
-    window.shareTelegram = shareTelegram
-    window.shareLinkedIn = shareLinkedIn
-    window.shareReddit = shareReddit
-    window.shareEmail = shareEmail
-    window.shareDiscord = shareDiscord
-    window.sharePinterest = sharePinterest
-    window.shareTumblr = shareTumblr
-    window.shareSMS = shareSMS
-
-    window.onload = () => {
-      loadMyLink()
-      loadLeaderboard()
-    }
-  </script>
+  window.onload = loadMyLink;
+</script>
 </body>
 </html>
