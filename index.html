@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VIRAL TRAFFIC ENGINE</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
-    body { font-family: 'Orbitron', sans-serif; background:#09090b; color:#67e8f9; }
-    .neon { text-shadow:0 0 20px #22d3ee,0 0 40px #ec4899; }
-    .glass { background:rgba(9,9,11,0.95); backdrop-filter:blur(20px); border:1px solid #67e8f9; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIRAL TRAFFIC ENGINE</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+body{font-family:'Orbitron',sans-serif;background:#09090b;color:#67e8f9}
+.neon{text-shadow:0 0 20px #22d3ee,0 0 40px #ec4899}
+.glass{background:rgba(9,9,11,0.95);backdrop-filter:blur(20px);border:1px solid #67e8f9}
+</style>
 </head>
 <body>
 
@@ -37,7 +37,6 @@
     </div>
     <div id="linkStatus" class="mt-6 text-emerald-400 text-xl">✅ Ready to share</div>
 
-    <!-- 11 SHARING BUTTONS -->
     <div class="grid grid-cols-4 md:grid-cols-7 gap-6 mt-12">
       <button onclick="shareTwitter()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-brands fa-x-twitter"></i></button>
       <button onclick="shareFacebook()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-brands fa-facebook"></i></button>
@@ -52,14 +51,8 @@
       <button onclick="shareSMS()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-solid fa-sms"></i></button>
     </div>
   </div>
-
-  <div class="glass rounded-3xl p-12 mt-12">
-    <h2 class="text-4xl font-bold mb-8">TOP REFERRAL LEADERS</h2>
-    <div id="leaderboard" class="text-center py-8">Loading leaderboard...</div>
-  </div>
 </div>
 
-<!-- ADMIN MODAL -->
 <div id="adminModal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-[9999]">
   <div class="glass max-w-lg w-full mx-6 rounded-3xl p-12">
     <div class="flex justify-between mb-8">
@@ -79,64 +72,61 @@
 </div>
 
 <script>
-  let myCode = localStorage.getItem('myReferralCode') || ('VIRAL-' + Math.random().toString(36).substring(2,10).toUpperCase());
-  localStorage.setItem('myReferralCode', myCode);
+let myCode = localStorage.getItem('myReferralCode') || ('VIRAL-' + Math.random().toString(36).substring(2,10).toUpperCase());
+localStorage.setItem('myReferralCode', myCode);
 
-  function loadMyLink() {
-    document.getElementById('refLink').value = location.origin + '/?ref=' + myCode;
-  }
+function loadMyLink(){document.getElementById('refLink').value = location.origin + '/?ref=' + myCode;}
 
-  function showAdminModal() { document.getElementById('adminModal').classList.remove('hidden'); }
-  function hideAdminModal() { document.getElementById('adminModal').classList.add('hidden'); }
-  function checkAdminPassword() {
-    if (document.getElementById('adminPass').value === 'viral2026$') {
-      document.getElementById('passwordScreen').classList.add('hidden');
-      document.getElementById('adminDashboard').classList.remove('hidden');
-    } else alert('Wrong password');
-  }
-  function updateTargetWebsite() { alert('Target URL saved!'); }
-  function resetAllStats() { if(confirm('Reset all stats?')) alert('Stats reset!'); }
-  function copyLink() {
-    navigator.clipboard.writeText(document.getElementById('refLink').value);
-    const btn = document.getElementById('copyBtn');
-    const old = btn.textContent;
-    btn.textContent = 'COPIED ✓';
-    confetti({particleCount:300});
-    setTimeout(() => btn.textContent = old, 1500);
-  }
+function showAdminModal(){document.getElementById('adminModal').classList.remove('hidden')}
+function hideAdminModal(){document.getElementById('adminModal').classList.add('hidden')}
+function checkAdminPassword(){
+  if(document.getElementById('adminPass').value==='viral2026$'){
+    document.getElementById('passwordScreen').classList.add('hidden');
+    document.getElementById('adminDashboard').classList.remove('hidden');
+  } else alert('Wrong password');
+}
+function updateTargetWebsite(){alert('Target saved!')}
+function resetAllStats(){if(confirm('Reset all?')) alert('Stats reset')}
+function copyLink(){
+  navigator.clipboard.writeText(document.getElementById('refLink').value);
+  const btn=document.getElementById('copyBtn');
+  const old=btn.textContent;
+  btn.textContent='COPIED ✓';
+  confetti({particleCount:300});
+  setTimeout(()=>btn.textContent=old,1500);
+}
 
-  function shareTwitter() { window.open(`https://twitter.com/intent/tweet?text=Join%20me%20on%20Viral%20Traffic%20Engine&url=${encodeURIComponent(document.getElementById('refLink').value)}`); }
-  function shareFacebook() { window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(document.getElementById('refLink').value)}`); }
-  function shareWhatsApp() { window.open(`https://wa.me/?text=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`); }
-  function shareTelegram() { window.open(`https://t.me/share/url?url=${encodeURIComponent(document.getElementById('refLink').value)}`); }
-  function shareLinkedIn() { window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(document.getElementById('refLink').value)}`); }
-  function shareReddit() { window.open(`https://reddit.com/submit?url=${encodeURIComponent(document.getElementById('refLink').value)}&title=Join%20me%20on%20Viral%20Traffic%20Engine`); }
-  function shareEmail() { window.location.href = `mailto:?subject=Check%20this%20out&body=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`); }
-  function shareDiscord() { window.open(`https://discord.com/channels/@me?text=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`); }
-  function sharePinterest() { window.open(`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(document.getElementById('refLink').value)}`); }
-  function shareTumblr() { window.open(`https://www.tumblr.com/share/link?url=${encodeURIComponent(document.getElementById('refLink').value)}`); }
-  function shareSMS() { window.location.href = `sms:?body=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`); }
+function shareTwitter(){window.open(`https://twitter.com/intent/tweet?text=Join%20me%20on%20Viral%20Traffic%20Engine&url=${encodeURIComponent(document.getElementById('refLink').value)}`)}
+function shareFacebook(){window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(document.getElementById('refLink').value)}`)}
+function shareWhatsApp(){window.open(`https://wa.me/?text=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`)}
+function shareTelegram(){window.open(`https://t.me/share/url?url=${encodeURIComponent(document.getElementById('refLink').value)}`)}
+function shareLinkedIn(){window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(document.getElementById('refLink').value)}`)}
+function shareReddit(){window.open(`https://reddit.com/submit?url=${encodeURIComponent(document.getElementById('refLink').value)}&title=Join%20me%20on%20Viral%20Traffic%20Engine`)}
+function shareEmail(){window.location.href=`mailto:?subject=Check%20this%20out&body=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`)}
+function shareDiscord(){window.open(`https://discord.com/channels/@me?text=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`)}
+function sharePinterest(){window.open(`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(document.getElementById('refLink').value)}`)}
+function shareTumblr(){window.open(`https://www.tumblr.com/share/link?url=${encodeURIComponent(document.getElementById('refLink').value)}`)}
+function shareSMS(){window.location.href=`sms:?body=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`)}
 
-  // GLOBAL EXPOSURE - THIS IS WHAT WAS MISSING
-  window.showAdminModal = showAdminModal;
-  window.hideAdminModal = hideAdminModal;
-  window.checkAdminPassword = checkAdminPassword;
-  window.updateTargetWebsite = updateTargetWebsite;
-  window.resetAllStats = resetAllStats;
-  window.copyLink = copyLink;
-  window.shareTwitter = shareTwitter;
-  window.shareFacebook = shareFacebook;
-  window.shareWhatsApp = shareWhatsApp;
-  window.shareTelegram = shareTelegram;
-  window.shareLinkedIn = shareLinkedIn;
-  window.shareReddit = shareReddit;
-  window.shareEmail = shareEmail;
-  window.shareDiscord = shareDiscord;
-  window.sharePinterest = sharePinterest;
-  window.shareTumblr = shareTumblr;
-  window.shareSMS = shareSMS;
+window.showAdminModal = showAdminModal;
+window.hideAdminModal = hideAdminModal;
+window.checkAdminPassword = checkAdminPassword;
+window.updateTargetWebsite = updateTargetWebsite;
+window.resetAllStats = resetAllStats;
+window.copyLink = copyLink;
+window.shareTwitter = shareTwitter;
+window.shareFacebook = shareFacebook;
+window.shareWhatsApp = shareWhatsApp;
+window.shareTelegram = shareTelegram;
+window.shareLinkedIn = shareLinkedIn;
+window.shareReddit = shareReddit;
+window.shareEmail = shareEmail;
+window.shareDiscord = shareDiscord;
+window.sharePinterest = sharePinterest;
+window.shareTumblr = shareTumblr;
+window.shareSMS = shareSMS;
 
-  window.onload = loadMyLink;
+window.onload = loadMyLink;
 </script>
 </body>
 </html>
