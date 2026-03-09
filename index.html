@@ -37,7 +37,6 @@ body{font-family:'Orbitron',sans-serif;background:#09090b;color:#67e8f9}
     </div>
     <div id="linkStatus" class="mt-6 text-emerald-400 text-xl">✅ Ready to share</div>
 
-    <!-- 11 SHARING BUTTONS -->
     <div class="grid grid-cols-4 md:grid-cols-7 gap-6 mt-12">
       <button onclick="shareTwitter()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-brands fa-x-twitter"></i></button>
       <button onclick="shareFacebook()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-brands fa-facebook"></i></button>
@@ -51,6 +50,11 @@ body{font-family:'Orbitron',sans-serif;background:#09090b;color:#67e8f9}
       <button onclick="shareTumblr()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-brands fa-tumblr"></i></button>
       <button onclick="shareSMS()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-solid fa-sms"></i></button>
     </div>
+  </div>
+
+  <div class="glass rounded-3xl p-12 mt-12">
+    <h2 class="text-4xl font-bold mb-8">TOP REFERRAL LEADERS</h2>
+    <div id="leaderboard" class="text-center py-8">No referrers yet — start sharing!</div>
   </div>
 </div>
 
@@ -75,10 +79,7 @@ body{font-family:'Orbitron',sans-serif;background:#09090b;color:#67e8f9}
 <script>
 let myCode = localStorage.getItem('myReferralCode') || ('VIRAL-' + Math.random().toString(36).substring(2,10).toUpperCase());
 localStorage.setItem('myReferralCode', myCode);
-
-function loadMyLink(){
-  document.getElementById('refLink').value = location.origin + '/?ref=' + myCode;
-}
+document.getElementById('refLink').value = location.origin + '/?ref=' + myCode;
 
 function showAdminModal(){document.getElementById('adminModal').classList.remove('hidden')}
 function hideAdminModal(){document.getElementById('adminModal').classList.add('hidden')}
@@ -96,7 +97,7 @@ function copyLink(){
   const old = btn.textContent;
   btn.textContent = 'COPIED ✓';
   confetti({particleCount:300});
-  setTimeout(() => btn.textContent = old, 1500);
+  setTimeout(()=>btn.textContent=old,1500);
 }
 
 function shareTwitter(){window.open(`https://twitter.com/intent/tweet?text=Join me on Viral Traffic Engine&url=${encodeURIComponent(document.getElementById('refLink').value)}`)}
@@ -105,11 +106,11 @@ function shareWhatsApp(){window.open(`https://wa.me/?text=${encodeURIComponent('
 function shareTelegram(){window.open(`https://t.me/share/url?url=${encodeURIComponent(document.getElementById('refLink').value)}`)}
 function shareLinkedIn(){window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(document.getElementById('refLink').value)}`)}
 function shareReddit(){window.open(`https://reddit.com/submit?url=${encodeURIComponent(document.getElementById('refLink').value)}&title=Join me on Viral Traffic Engine`)}
-function shareEmail(){window.location.href = `mailto:?subject=Check this out&body=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`)}
+function shareEmail(){window.location.href=`mailto:?subject=Check this out&body=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`)}
 function shareDiscord(){window.open(`https://discord.com/channels/@me?text=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`)}
 function sharePinterest(){window.open(`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(document.getElementById('refLink').value)}`)}
 function shareTumblr(){window.open(`https://www.tumblr.com/share/link?url=${encodeURIComponent(document.getElementById('refLink').value)}`)}
-function shareSMS(){window.location.href = `sms:?body=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`)}
+function shareSMS(){window.location.href=`sms:?body=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`)}
 
 window.showAdminModal = showAdminModal;
 window.hideAdminModal = hideAdminModal;
@@ -128,8 +129,6 @@ window.shareDiscord = shareDiscord;
 window.sharePinterest = sharePinterest;
 window.shareTumblr = shareTumblr;
 window.shareSMS = shareSMS;
-
-window.onload = loadMyLink;
 </script>
 </body>
 </html>
