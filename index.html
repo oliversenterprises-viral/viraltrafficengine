@@ -9,9 +9,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
-body {font-family:'Orbitron',sans-serif;background:#09090b;color:#67e8f9}
-.neon {text-shadow:0 0 20px #22d3ee,0 0 40px #ec4899}
-.glass {background:rgba(9,9,11,0.95);backdrop-filter:blur(20px);border:1px solid #67e8f9}
+body{font-family:'Orbitron',sans-serif;background:#09090b;color:#67e8f9}
+.neon{text-shadow:0 0 20px #22d3ee,0 0 40px #ec4899}
+.glass{background:rgba(9,9,11,0.95);backdrop-filter:blur(20px);border:1px solid #67e8f9}
 </style>
 </head>
 <body>
@@ -37,6 +37,7 @@ body {font-family:'Orbitron',sans-serif;background:#09090b;color:#67e8f9}
     </div>
     <div id="linkStatus" class="mt-6 text-emerald-400 text-xl">✅ Ready to share</div>
 
+    <!-- 11 SHARING BUTTONS -->
     <div class="grid grid-cols-4 md:grid-cols-7 gap-6 mt-12">
       <button onclick="shareTwitter()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-brands fa-x-twitter"></i></button>
       <button onclick="shareFacebook()" class="py-8 bg-black border border-cyan-400 hover:bg-cyan-950 rounded-3xl text-5xl"><i class="fa-brands fa-facebook"></i></button>
@@ -75,12 +76,14 @@ body {font-family:'Orbitron',sans-serif;background:#09090b;color:#67e8f9}
 let myCode = localStorage.getItem('myReferralCode') || ('VIRAL-' + Math.random().toString(36).substring(2,10).toUpperCase());
 localStorage.setItem('myReferralCode', myCode);
 
-function loadMyLink(){document.getElementById('refLink').value = location.origin + '/?ref=' + myCode;}
+function loadMyLink(){
+  document.getElementById('refLink').value = location.origin + '/?ref=' + myCode;
+}
 
 function showAdminModal(){document.getElementById('adminModal').classList.remove('hidden')}
 function hideAdminModal(){document.getElementById('adminModal').classList.add('hidden')}
 function checkAdminPassword(){
-  if(document.getElementById('adminPass').value==='viral2026$'){
+  if(document.getElementById('adminPass').value === 'viral2026$'){
     document.getElementById('passwordScreen').classList.add('hidden');
     document.getElementById('adminDashboard').classList.remove('hidden');
   } else alert('Wrong password');
@@ -89,24 +92,24 @@ function updateTargetWebsite(){alert('Target saved!')}
 function resetAllStats(){if(confirm('Reset all?')) alert('Stats reset')}
 function copyLink(){
   navigator.clipboard.writeText(document.getElementById('refLink').value);
-  const btn=document.getElementById('copyBtn');
-  const old=btn.textContent;
-  btn.textContent='COPIED ✓';
+  const btn = document.getElementById('copyBtn');
+  const old = btn.textContent;
+  btn.textContent = 'COPIED ✓';
   confetti({particleCount:300});
-  setTimeout(()=>btn.textContent=old,1500);
+  setTimeout(() => btn.textContent = old, 1500);
 }
 
-function shareTwitter(){window.open(`https://twitter.com/intent/tweet?text=Join%20me%20on%20Viral%20Traffic%20Engine&url=${encodeURIComponent(document.getElementById('refLink').value)}`)}
+function shareTwitter(){window.open(`https://twitter.com/intent/tweet?text=Join me on Viral Traffic Engine&url=${encodeURIComponent(document.getElementById('refLink').value)}`)}
 function shareFacebook(){window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(document.getElementById('refLink').value)}`)}
 function shareWhatsApp(){window.open(`https://wa.me/?text=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`)}
 function shareTelegram(){window.open(`https://t.me/share/url?url=${encodeURIComponent(document.getElementById('refLink').value)}`)}
 function shareLinkedIn(){window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(document.getElementById('refLink').value)}`)}
-function shareReddit(){window.open(`https://reddit.com/submit?url=${encodeURIComponent(document.getElementById('refLink').value)}&title=Join%20me%20on%20Viral%20Traffic%20Engine`)}
-function shareEmail(){window.location.href=`mailto:?subject=Check%20this%20out&body=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`)}
+function shareReddit(){window.open(`https://reddit.com/submit?url=${encodeURIComponent(document.getElementById('refLink').value)}&title=Join me on Viral Traffic Engine`)}
+function shareEmail(){window.location.href = `mailto:?subject=Check this out&body=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`)}
 function shareDiscord(){window.open(`https://discord.com/channels/@me?text=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`)}
 function sharePinterest(){window.open(`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(document.getElementById('refLink').value)}`)}
 function shareTumblr(){window.open(`https://www.tumblr.com/share/link?url=${encodeURIComponent(document.getElementById('refLink').value)}`)}
-function shareSMS(){window.location.href=`sms:?body=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`)}
+function shareSMS(){window.location.href = `sms:?body=${encodeURIComponent('Viral Traffic Engine: ' + document.getElementById('refLink').value)}`)}
 
 window.showAdminModal = showAdminModal;
 window.hideAdminModal = hideAdminModal;
